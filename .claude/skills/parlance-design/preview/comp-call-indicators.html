@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Call indicators" subtitle="Ringing, listening, speaking, live timer, typing" viewport="700x130" --><html lang="en"><head><meta charset="utf-8"><title>Call indicators</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Open+Sans:wght@600&display=swap');
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:'Open Sans',system-ui,sans-serif;background:#fff;padding:22px 24px;-webkit-font-smoothing:antialiased}
+.ind-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:10px 17px;font-size:13.5px;font-weight:600;white-space:nowrap}
+.bars{display:flex;align-items:center;gap:3px;height:20px}
+.bars span{animation:eq 1s ease-in-out infinite}
+@keyframes eq{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
+.ld{width:7px;height:7px;border-radius:50%;background:currentColor;display:inline-block;animation:bnc 1.3s ease-in-out infinite}
+.ld:nth-child(2){animation-delay:.16s}.ld:nth-child(3){animation-delay:.32s}
+@keyframes bnc{0%,70%,100%{transform:translateY(0);opacity:.45}35%{transform:translateY(-5px);opacity:1}}
+.ring-wrap{position:relative;width:48px;height:48px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ring-wrap .ph{width:44px;height:44px;border-radius:50%;background:#2E92AB;color:#fff;display:flex;align-items:center;justify-content:center;z-index:1}
+.ring-wrap .rg{position:absolute;inset:0;border-radius:50%;border:2px solid #2E92AB;animation:rng 1.8s ease-out infinite}
+.ring-wrap .rg:nth-child(2){animation-delay:.9s}
+@keyframes rng{0%{transform:scale(.7);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+.live-dot{width:9px;height:9px;border-radius:50%;background:#e23b3b;animation:pd 1.3s ease-in-out infinite}
+@keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.8)}}
+</style></head><body>
+<div class="ind-row">
+  <div class="ring-wrap"><span class="rg"></span><span class="rg"></span><span class="ph"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span></div>
+  <div class="pill" style="background:#E9F6F5;color:#1F7E96">Listening <span style="display:inline-flex;gap:4px;color:#2E92AB"><span class="ld"></span><span class="ld"></span><span class="ld"></span></span></div>
+  <div class="pill" style="background:#F8C830;color:#0E1A38"><svg viewBox="0 0 24 24" width="15" height="15" fill="#0E1A38" stroke="none"><polygon points="6 4 20 12 6 20 6 4"/></svg><div class="bars"><span style="width:3px;border-radius:2px;background:#0E1A38;height:6px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:17px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:20px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:12px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:12px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:20px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:17px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:6px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:17px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:20px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:12px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:12px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:20px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:17px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:6px"></span><span style="width:3px;border-radius:2px;background:#0E1A38;height:17px"></span></div></div>
+  <div class="pill" style="background:#0E1A38;color:#fff"><span class="live-dot"></span>Live &middot; 02:14</div>
+  <div class="pill" style="background:#F5F8FB;color:#43536B">Agent typing <span style="display:inline-flex;gap:4px;color:#6B7888"><span class="ld"></span><span class="ld"></span><span class="ld"></span></span></div>
+</div>
+</body></html>

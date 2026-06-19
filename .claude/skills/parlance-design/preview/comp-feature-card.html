@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Feature cards" subtitle="Yellow icon tile + title + body" viewport="700x250" --><html lang="en"><head><meta charset="utf-8"><title>Feature card</title>
+<link rel="stylesheet" href="../colors_and_type.css"><link rel="stylesheet" href="card.css">
+<style>
+.feat{flex:1;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--sh-md);transition:box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.feat:hover{box-shadow:var(--sh-lg);transform:translateY(-3px)}
+.feat .tile{width:54px;height:54px;border-radius:13px;background:var(--parlance-yellow);display:flex;align-items:center;justify-content:center;margin-bottom:14px;transition:background var(--dur) var(--ease),transform .35s var(--ease)}
+.feat:hover .tile{background:var(--parlance-yellow-deep);transform:scale(1.06)}
+.feat .tile svg{width:27px;height:27px;color:#fff;stroke:#fff;overflow:visible}
+.feat .ft{font-family:var(--font-display);font-weight:600;font-size:17px;color:var(--ink);margin-bottom:6px}
+
+/* per-icon hover motion */
+.feat:hover .ic-mic{animation:mic-pulse 1.1s var(--ease) infinite}
+@keyframes mic-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+
+.feat:hover .ic-layers > *{animation:layer-shuffle 1.2s var(--ease) infinite}
+.feat:hover .ic-layers > :nth-child(2){animation-delay:.12s}
+.feat:hover .ic-layers > :nth-child(3){animation-delay:.24s}
+@keyframes layer-shuffle{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.5px)}}
+
+.feat:hover .ic-shield{animation:shield-tilt 1.2s var(--ease) infinite}
+@keyframes shield-tilt{0%,100%{transform:rotate(0)}25%{transform:rotate(-7deg)}75%{transform:rotate(7deg)}}
+.feat:hover .ic-shield .chk{stroke-dasharray:14;stroke-dashoffset:14;animation:chk-draw 1.2s var(--ease) infinite}
+@keyframes chk-draw{0%{stroke-dashoffset:14}45%,100%{stroke-dashoffset:0}}
+svg [style]{transform-box:fill-box;transform-origin:center}
+.ic-layers > *,.ic-mic,.ic-shield{transform-box:fill-box;transform-origin:center}
+</style></head><body>
+<div class="row">
+  <div class="feat">
+    <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><g class="ic-mic"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></g></svg></div>
+    <div class="ft">Proprietary name recognition</div>
+    <div class="p-sm">Recognizes physician names and clinical terms.</div>
+  </div>
+  <div class="feat">
+    <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><g class="ic-layers"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></g></svg></div>
+    <div class="ft">Real-time EHR &amp; CRM</div>
+    <div class="p-sm">Two-way integration that updates during the call.</div>
+  </div>
+  <div class="feat">
+    <div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><g class="ic-shield"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path class="chk" d="m9 12 2 2 4-4"/></g></svg></div>
+    <div class="ft">Engineered safety</div>
+    <div class="p-sm">Hard stops and human transfer when needed.</div>
+  </div>
+</div>
+</body></html>

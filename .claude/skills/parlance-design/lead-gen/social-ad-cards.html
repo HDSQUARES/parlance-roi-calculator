@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Brand" name="Social / ad cards" subtitle="LinkedIn 1200×627 + square 1080×1080 ad units" viewport="1010x440" -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parlance — Social / Ad Cards</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap');
+:root{--yellow:#F8C830;--teal:#40A0B8;--teal6:#2E92AB;--navy:#0E1A38;--navy8:#122249;--royal:#2E6FD0;--ink:#15233D;--ink2:#43536B;--mint:#E9F6F5}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:'Open Sans',system-ui,sans-serif;background:#6b7280;padding:30px;display:flex;flex-wrap:wrap;gap:30px;justify-content:center;align-items:flex-start}
+.label{position:absolute;top:-22px;left:0;font-family:'Poppins',sans-serif;font-size:12px;color:#fff;opacity:.8;font-weight:600}
+.frame{position:relative;box-shadow:0 16px 44px rgba(0,0,0,.3)}
+.eyebrow{font-family:'Poppins',sans-serif;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow)}
+.bars{display:inline-flex;align-items:center;gap:3px}
+.bars span{width:4px;border-radius:2px;background:var(--navy);animation:eq 1s ease-in-out infinite}
+@keyframes eq{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+
+/* ---- LinkedIn 1200x627 (scaled) ---- */
+.li{width:600px;height:313px;background:linear-gradient(125deg,var(--navy) 0%,var(--navy8) 46%,var(--royal) 120%);color:#fff;border-radius:6px;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 44px}
+.li img.lg{position:absolute;top:26px;left:44px;height:22px}
+.li .eyebrow{font-size:11px;margin-bottom:12px}
+.li h2{font-family:'Poppins',sans-serif;font-weight:800;font-size:33px;line-height:1.1;margin:0;max-width:440px;letter-spacing:-.01em}
+.li h2 .y{color:var(--yellow)}
+.li .sub{font-size:14px;color:rgba(255,255,255,.8);margin-top:12px;max-width:380px}
+.li .wave{position:absolute;right:38px;bottom:36px;background:var(--yellow);border-radius:12px;padding:11px 16px;display:flex;align-items:center;gap:10px}
+.li .wave .bars span{height:14px}
+.li .chip{position:absolute;right:38px;top:34px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 13px;font-size:11px;font-weight:700;font-family:'Poppins',sans-serif;display:flex;align-items:center;gap:6px}
+.li .chip .d{width:6px;height:6px;border-radius:50%;background:#3FCB8E}
+
+/* ---- Square 1080x1080 (scaled) ---- */
+.sq{width:360px;height:360px;background:#fff;border-radius:6px;overflow:hidden;position:relative;display:flex;flex-direction:column;padding:34px}
+.sq img.lg{height:22px;margin-bottom:auto}
+.sq .eyebrow{color:var(--teal6);font-size:10.5px;margin-bottom:9px}
+.sq h2{font-family:'Poppins',sans-serif;font-weight:800;font-size:27px;line-height:1.12;margin:0;color:var(--ink);letter-spacing:-.01em}
+.sq .stat{margin-top:14px;font-family:'Poppins',sans-serif;font-weight:800;font-size:40px;color:var(--teal6);line-height:1}
+.sq .statl{font-size:12px;color:var(--ink2);margin-top:2px}
+.sq .arc{position:absolute;right:-60px;bottom:-60px;width:200px;height:200px;border-radius:50%;border:30px solid var(--mint);opacity:.7}
+.sq .btn{margin-top:18px;align-self:flex-start;background:var(--navy);color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;padding:11px 20px;border-radius:8px;position:relative;z-index:1}
+</style>
+</head>
+<body>
+<div class="frame">
+  <span class="label">LinkedIn / Paid — 1200×627</span>
+  <div class="li">
+    <img class="lg" src="../assets/logo-parlance-white.png" alt="Parlance">
+    <div class="chip"><span class="d"></span>HIPAA-compliant</div>
+    <div class="eyebrow">Voice AI for Healthcare</div>
+    <h2>Every patient call, <span class="y">answered</span> and routed correctly.</h2>
+    <div class="sub">Automate routine calls across your switchboard, contact center, and clinics.</div>
+    <div class="wave"><svg viewBox="0 0 24 24" width="16" height="16" fill="#0E1A38" stroke="none"><polygon points="6 4 20 12 6 20 6 4"/></svg><span class="bars"><span></span><span style="height:8px"></span><span style="height:14px"></span><span style="height:10px"></span><span style="height:6px"></span></span></div>
+  </div>
+</div>
+<div class="frame">
+  <span class="label">Square — 1080×1080</span>
+  <div class="sq">
+    <img class="lg" src="../assets/logo-parlance.png" alt="Parlance">
+    <div class="arc"></div>
+    <div class="eyebrow">By the Numbers</div>
+    <h2>Routine calls, handled.</h2>
+    <div class="stat">85%+</div>
+    <div class="statl">of routine calls self-served by Parlance</div>
+    <div class="btn">See how →</div>
+  </div>
+</div>
+</body>
+</html>

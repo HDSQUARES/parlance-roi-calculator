@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Accordion / FAQ" subtitle="Expandable FAQ items" viewport="700x330" --><html lang="en"><head><meta charset="utf-8"><title>Accordion / FAQ</title><style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap');*{box-sizing:border-box}html,body{margin:0}body{font-family:'Open Sans',system-ui,sans-serif;background:#fff;-webkit-font-smoothing:antialiased;color:#15233D}
+.col{display:flex;flex-direction:column;gap:11px;max-width:660px;margin:0 auto}
+.item{border:1px solid #E2E8F0;border-radius:13px;background:#fff;overflow:hidden;box-shadow:0 2px 8px rgba(14,26,56,.04)}
+.q{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 18px;font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;color:#15233D;cursor:pointer}
+.q .ic{width:26px;height:26px;border-radius:50%;background:#E9F6F5;color:#1F7E96;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .2s}
+.item.open .q .ic{transform:rotate(180deg);background:#2E92AB;color:#fff}
+.a{padding:0 18px 16px;font-size:13.5px;line-height:1.6;color:#43536B;max-width:92%}
+.item:not(.open) .a{display:none}
+</style></head><body>
+<div class="col">
+  <div class="item open"><div class="q">Is Parlance HIPAA-compliant?<span class="ic"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></div><div class="a">Yes — every interaction across voice, SMS, and web chat is HIPAA-compliant by design, with secure EHR/CRM integration over HL7.</div></div>
+  <div class="item"><div class="q">How long does implementation take?<span class="ic"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></div><div class="a">Most health systems see measurable results within 30 days, drawing on thousands of prior deployments.</div></div>
+  <div class="item"><div class="q">Can it recognize physician names?<span class="ic"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></div><div class="a">Proprietary name recognition understands physician names, departments, and medications so callers reach the right place the first time.</div></div>
+  <div class="item"><div class="q">What happens on a complex call?<span class="ic"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></div><div class="a">Engineered safety means hard stops and instant human transfer whenever a call needs a person.</div></div>
+</div></body></html>

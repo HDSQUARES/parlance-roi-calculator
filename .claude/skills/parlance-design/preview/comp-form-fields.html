@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Form fields & lead form" subtitle="Inputs, select, checkbox, focus & error states" viewport="700x480" --><html lang="en"><head><meta charset="utf-8"><title>Form fields</title><style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap');*{box-sizing:border-box}html,body{margin:0}body{font-family:'Open Sans',system-ui,sans-serif;background:#fff;padding:22px 24px;-webkit-font-smoothing:antialiased;color:#15233D}
+.wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px 22px;max-width:660px;margin:0 auto}
+.field label{display:block;font-size:12.5px;font-weight:700;color:#43536B;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;padding:11px 13px;border:1.5px solid #E2E8F0;border-radius:9px;font-size:14px;font-family:'Open Sans',sans-serif;color:#15233D;background:#fff}
+.field input::placeholder{color:#A8B2C0}
+.field.focus input{border-color:#2E92AB;box-shadow:0 0 0 3px rgba(46,146,171,.15);outline:none}
+.field.err input{border-color:#E2574C}
+.err-msg{font-size:11.5px;color:#E2574C;margin-top:5px;display:flex;align-items:center;gap:5px}
+.full{grid-column:1/-1}
+.check{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:#43536B;line-height:1.4}
+.check .box{width:19px;height:19px;border-radius:5px;border:1.5px solid #C7D0DC;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff}
+.check .box.on{background:#2E92AB;border-color:#2E92AB}
+.btn{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;border-radius:9px;padding:13px 24px;border:0;cursor:pointer;background:#2E92AB;color:#fff}
+.hint{font-size:12px;color:#6B7888;margin-top:-4px}
+</style></head><body>
+<div class="wrap">
+  <div class="field"><label>Full name</label><input placeholder="Jordan Rivera"></div>
+  <div class="field focus"><label>Work email</label><input value="jordan@healthsystem.org"></div>
+  <div class="field"><label>Organization</label><input placeholder="Health system name"></div>
+  <div class="field"><label>Role</label><select><option>Patient Access</option><option>Contact Center Ops</option><option>IT / Telecom</option></select></div>
+  <div class="field err full"><label>Phone</label><input placeholder="(555) 000-0000"><div class="err-msg">⚠ Enter a valid phone number</div></div>
+  <div class="field full"><label>How can we help?</label><textarea rows="2" placeholder="Tell us about your call volume…"></textarea></div>
+  <div class="check full"><span class="box on"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>I agree to be contacted about Parlance. We're HIPAA-compliant and never share your data.</span></div>
+  <div class="full"><button class="btn">Schedule a Demo</button></div>
+</div></body></html>

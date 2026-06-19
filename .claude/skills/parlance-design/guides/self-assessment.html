@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Self-Assessment Quiz" subtitle="5-step patient-access quiz → scored result + gated report" viewport="700x640" -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parlance — Patient Access Self-Assessment</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap');
+:root{--yellow:#F8C830;--teal:#40A0B8;--teal6:#2E92AB;--teal7:#1F7E96;--navy:#0E1A38;--navy8:#122249;--royal:#2E6FD0;--ink:#15233D;--ink2:#43536B;--ink3:#6B7888;--line:#E2E8F0;--mint:#E9F6F5;--grey:#F5F8FB;--green:#1f9d63}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:'Open Sans',system-ui,sans-serif;background:var(--grey);color:var(--ink);-webkit-font-smoothing:antialiased;padding:40px 20px;min-height:100vh}
+.card{max-width:660px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 18px 48px rgba(14,26,56,.1);overflow:hidden}
+.head{padding:24px 30px 0;display:flex;align-items:center;justify-content:space-between}
+.head img{height:24px}
+.head .step{font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;color:var(--ink3);letter-spacing:.04em}
+.prog{height:5px;background:var(--line);margin:18px 30px 0;border-radius:3px;overflow:hidden}
+.prog .bar{height:100%;background:var(--teal6);border-radius:3px;width:20%;transition:width .4s cubic-bezier(.22,.61,.36,1)}
+.body{padding:26px 30px 30px}
+.eyebrow{font-family:'Poppins',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal6);margin-bottom:10px}
+.q{font-family:'Poppins',sans-serif;font-weight:700;font-size:23px;line-height:1.2;margin:0 0 20px}
+.opts{display:flex;flex-direction:column;gap:11px}
+.opt{display:flex;align-items:center;gap:13px;padding:15px 17px;border:1.5px solid var(--line);border-radius:13px;cursor:pointer;transition:all .15s;font-size:15px;font-weight:600;color:var(--ink2)}
+.opt:hover{border-color:var(--teal6);background:var(--mint)}
+.opt .rad{width:21px;height:21px;border-radius:50%;border:2px solid #C7D0DC;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.opt.sel{border-color:var(--teal6);background:var(--mint)}
+.opt.sel .rad{border-color:var(--teal6)}
+.opt.sel .rad::after{content:"";width:11px;height:11px;border-radius:50%;background:var(--teal6)}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.back{background:none;border:0;color:var(--ink3);font-size:14px;font-weight:600;cursor:pointer;font-family:'Open Sans',sans-serif}
+.next{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;border-radius:10px;padding:13px 26px;border:0;cursor:pointer;background:var(--teal6);color:#fff;opacity:.4;pointer-events:none;transition:opacity .2s}
+.next.on{opacity:1;pointer-events:auto}
+
+/* result */
+.result{display:none;text-align:center;padding:8px 0}
+.gauge{position:relative;width:180px;height:180px;margin:6px auto 18px}
+.gauge svg{transform:rotate(-90deg)}
+.gauge .val{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gauge .val .n{font-family:'Poppins',sans-serif;font-weight:800;font-size:46px;line-height:1;color:var(--navy)}
+.gauge .val .s{font-size:12px;color:var(--ink3);font-weight:600;letter-spacing:.04em}
+.tier{font-family:'Poppins',sans-serif;font-weight:700;font-size:24px;margin:0 0 8px}
+.rdesc{font-size:15px;color:var(--ink2);line-height:1.55;max-width:480px;margin:0 auto 22px}
+.gate{background:var(--grey);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:left;margin-top:6px}
+.gate h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;margin:0 0 4px}
+.gate p{font-size:13px;color:var(--ink2);margin:0 0 14px}
+.gate .frow{display:flex;gap:10px}
+.gate input{flex:1;padding:12px 14px;border:1.5px solid var(--line);border-radius:9px;font-size:14px;font-family:'Open Sans',sans-serif}
+.gate input:focus{outline:none;border-color:var(--teal6);box-shadow:0 0 0 3px rgba(46,146,171,.15)}
+.gate .btn{font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;border-radius:9px;padding:12px 20px;border:0;cursor:pointer;background:var(--yellow);color:var(--navy);white-space:nowrap}
+.restart{margin-top:16px;background:none;border:0;color:var(--ink3);font-size:13px;font-weight:600;cursor:pointer;text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="head"><img src="../assets/logo-parlance.png" alt="Parlance"><span class="step" id="stepLbl">Question 1 of 5</span></div>
+  <div class="prog"><div class="bar" id="bar"></div></div>
+  <div class="body">
+    <div id="quiz">
+      <div class="eyebrow">Patient Access Self-Assessment</div>
+      <h2 class="q" id="qText">Loading…</h2>
+      <div class="opts" id="opts"></div>
+      <div class="nav"><button class="back" id="back" style="visibility:hidden">← Back</button><button class="next" id="next">Next →</button></div>
+    </div>
+    <div class="result" id="result">
+      <div class="eyebrow">Your result</div>
+      <div class="gauge">
+        <svg width="180" height="180"><circle cx="90" cy="90" r="78" fill="none" stroke="#E2E8F0" stroke-width="14"/><circle id="arc" cx="90" cy="90" r="78" fill="none" stroke="#2E92AB" stroke-width="14" stroke-linecap="round" stroke-dasharray="490" stroke-dashoffset="490" style="transition:stroke-dashoffset 1s cubic-bezier(.22,.61,.36,1)"/></svg>
+        <div class="val"><span class="n" id="score">0</span><span class="s">/ 100</span></div>
+      </div>
+      <h2 class="tier" id="tier">—</h2>
+      <p class="rdesc" id="rdesc"></p>
+      <div class="gate">
+        <h3>Get your custom assessment</h3>
+        <p>We'll send a tailored breakdown of where Parlance can automate calls for your team.</p>
+        <div class="frow"><input type="email" placeholder="you@healthsystem.org"><button class="btn">Send my report</button></div>
+      </div>
+      <button class="restart" id="restart">Retake the assessment</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var QS=[
+    {q:"How many inbound calls does your team handle each month?",o:[["Under 25,000",1],["25,000 – 100,000",2],["100,000 – 300,000",3],["More than 300,000",4]]},
+    {q:"What share of calls reach the right department on the first try?",o:[["More than 80%",1],["60 – 80%",2],["40 – 60%",3],["Less than 40%",4]]},
+    {q:"How would you describe your after-hours phone coverage?",o:[["Fully staffed 24/7",1],["Limited after-hours line",2],["Voicemail only",3],["No coverage / gaps",4]]},
+    {q:"What are typical hold times during peak hours?",o:[["Under 1 minute",1],["1 – 3 minutes",2],["3 – 8 minutes",3],["Over 8 minutes",4]]},
+    {q:"How much operator time goes to routine requests (scheduling, refills, routing)?",o:[["Very little",1],["Some",2],["A lot",3],["Most of the day",4]]}
+  ];
+  var i=0, ans=new Array(QS.length).fill(null);
+  var qText=document.getElementById('qText'),opts=document.getElementById('opts'),bar=document.getElementById('bar'),stepLbl=document.getElementById('stepLbl'),back=document.getElementById('back'),next=document.getElementById('next');
+  function render(){
+    var Q=QS[i];
+    qText.textContent=Q.q;
+    opts.innerHTML='';
+    Q.o.forEach(function(o,idx){
+      var d=document.createElement('div'); d.className='opt'+(ans[i]===idx?' sel':'');
+      d.innerHTML='<span class="rad"></span>'+o[0];
+      d.onclick=function(){ans[i]=idx;render();};
+      opts.appendChild(d);
+    });
+    stepLbl.textContent='Question '+(i+1)+' of '+QS.length;
+    bar.style.width=((i+1)/QS.length*100)+'%';
+    back.style.visibility=i===0?'hidden':'visible';
+    next.textContent=i===QS.length-1?'See my result →':'Next →';
+    next.className='next'+(ans[i]!==null?' on':'');
+  }
+  next.onclick=function(){ if(ans[i]===null)return; if(i<QS.length-1){i++;render();} else finish(); };
+  back.onclick=function(){ if(i>0){i--;render();} };
+  function finish(){
+    var raw=ans.reduce(function(s,a,idx){return s+QS[idx].o[a][1];},0); // 5..20
+    var score=Math.round((raw-5)/15*100); // 0..100
+    document.getElementById('quiz').style.display='none';
+    document.getElementById('result').style.display='block';
+    stepLbl.textContent='Complete'; bar.style.width='100%';
+    var tier,desc,col;
+    if(score>=66){tier="High automation opportunity";col="#2E92AB";desc="Your team is carrying significant routine call volume. Parlance could self-serve the majority of these calls — cutting hold times and freeing operators for complex, human work.";}
+    else if(score>=33){tier="Strong potential";col="#2E92AB";desc="There's meaningful room to automate. Parlance can absorb routine scheduling, refills, and routing so your team focuses on the calls that need a person.";}
+    else{tier="Optimizing the edges";col="#1f9d63";desc="You're running efficiently. Parlance can still capture after-hours demand and smooth peak-hour spikes so no call goes unanswered.";}
+    document.getElementById('tier').textContent=tier;
+    document.getElementById('rdesc').textContent=desc;
+    var arc=document.getElementById('arc'); arc.setAttribute('stroke',col);
+    var sc=document.getElementById('score');
+    setTimeout(function(){
+      arc.style.strokeDashoffset=(490-490*score/100);
+      var t0=performance.now();(function step(t){var p=Math.min((t-t0)/1000,1);sc.textContent=Math.round(score*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);})(performance.now());
+    },80);
+  }
+  document.getElementById('restart').onclick=function(){i=0;ans=new Array(QS.length).fill(null);document.getElementById('result').style.display='none';document.getElementById('quiz').style.display='block';render();};
+  render();
+})();
+</script>
+</body>
+</html>

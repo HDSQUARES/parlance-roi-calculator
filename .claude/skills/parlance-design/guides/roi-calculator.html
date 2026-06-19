@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="ROI Calculator" subtitle="Interactive lead magnet — call volume → annual savings, live count-ups" viewport="1000x620" -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parlance — ROI Calculator</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap');
+:root{--yellow:#F8C830;--teal:#40A0B8;--teal6:#2E92AB;--teal7:#1F7E96;--navy:#0E1A38;--navy8:#122249;--royal:#2E6FD0;--ink:#15233D;--ink2:#43536B;--ink3:#6B7888;--line:#E2E8F0;--mint:#E9F6F5;--grey:#F5F8FB}
+*{box-sizing:border-box}html,body{margin:0}
+body{font-family:'Open Sans',system-ui,sans-serif;background:var(--grey);color:var(--ink);-webkit-font-smoothing:antialiased;padding:40px 20px}
+.shell{max-width:1000px;margin:0 auto}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.top img{height:26px}
+.eyebrow{font-family:'Poppins',sans-serif;font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal6)}
+h1{font-family:'Poppins',sans-serif;font-weight:700;font-size:34px;line-height:1.1;margin:6px 0 4px;letter-spacing:-.01em}
+.sub{font-size:16px;color:var(--ink2);margin-bottom:26px;max-width:620px;line-height:1.5}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+@media(max-width:780px){.grid{grid-template-columns:1fr}}
+
+/* inputs */
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 6px 18px rgba(14,26,56,.06)}
+.panel h2{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin:0 0 22px}
+.ctrl{margin-bottom:24px}
+.ctrl .lab{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.ctrl .lab .n{font-size:14px;font-weight:600;color:var(--ink2)}
+.ctrl .lab .v{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;color:var(--teal7)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:3px;background:var(--line);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--teal6);cursor:pointer;border:3px solid #fff;box-shadow:0 2px 8px rgba(46,146,171,.4)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--teal6);cursor:pointer;border:3px solid #fff}
+.scale{display:flex;justify-content:space-between;font-size:11px;color:var(--ink3);margin-top:7px}
+
+/* results */
+.results{background:linear-gradient(160deg,#102149 0%,var(--navy) 55%,#16335f 100%);color:#fff;border-radius:20px;padding:28px;display:flex;flex-direction:column;box-shadow:0 18px 48px rgba(14,26,56,.2)}
+.results h2{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin:0 0 4px}
+.results .rs{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:22px}
+.big{margin-bottom:20px}
+.big .lbl{font-size:12.5px;color:rgba(255,255,255,.66);letter-spacing:.04em;text-transform:uppercase;font-weight:600;font-family:'Poppins',sans-serif}
+.big .num{font-family:'Poppins',sans-serif;font-weight:800;font-size:46px;line-height:1.05;letter-spacing:-.02em;margin-top:4px}
+.big .num.savings{color:var(--yellow)}
+.row2{display:flex;gap:18px;margin-bottom:22px}
+.row2 .cell{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px 16px}
+.row2 .cell .num{font-family:'Poppins',sans-serif;font-weight:700;font-size:26px;line-height:1}
+.row2 .cell .lbl{font-size:11.5px;color:rgba(255,255,255,.66);margin-top:6px}
+.cta{margin-top:auto;display:flex;flex-direction:column;gap:10px}
+.btn{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;border-radius:10px;padding:14px;border:0;cursor:pointer;text-align:center;background:var(--yellow);color:var(--navy)}
+.fine{font-size:11px;color:rgba(255,255,255,.5);line-height:1.5;text-align:center}
+.note{font-size:12.5px;color:var(--ink3);margin-top:18px;line-height:1.5}
+.note b{color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="top"><img src="../assets/logo-parlance.png" alt="Parlance"></div>
+  <div class="eyebrow">Interactive ROI Calculator</div>
+  <h1>See what Parlance saves your team</h1>
+  <div class="sub">Adjust your call volume and costs to estimate how much routine work Parlance can automate — and what that returns to your patient access team each year.</div>
+
+  <div class="grid">
+    <div class="panel">
+      <h2>Your numbers</h2>
+      <div class="ctrl">
+        <div class="lab"><span class="n">Monthly inbound calls</span><span class="v" id="v-vol">120,000</span></div>
+        <input type="range" id="vol" min="5000" max="500000" step="5000" value="120000">
+        <div class="scale"><span>5K</span><span>500K</span></div>
+      </div>
+      <div class="ctrl">
+        <div class="lab"><span class="n">Routine calls (schedulable, refills, routing)</span><span class="v" id="v-routine">70%</span></div>
+        <input type="range" id="routine" min="40" max="90" step="1" value="70">
+        <div class="scale"><span>40%</span><span>90%</span></div>
+      </div>
+      <div class="ctrl">
+        <div class="lab"><span class="n">Cost per agent-handled call</span><span class="v" id="v-cost">$7.00</span></div>
+        <input type="range" id="cost" min="3" max="15" step="0.5" value="7">
+        <div class="scale"><span>$3</span><span>$15</span></div>
+      </div>
+      <div class="note">Estimates assume Parlance self-serves <b>85%</b> of routine calls at an average <b>4-minute</b> agent handle time. Adjust the sliders to match your organization.</div>
+    </div>
+
+    <div class="results">
+      <h2>Your estimated impact</h2>
+      <div class="rs">Per year, with Parlance</div>
+      <div class="big">
+        <div class="lbl">Annual cost savings</div>
+        <div class="num savings"><span id="r-savings">$0</span></div>
+      </div>
+      <div class="row2">
+        <div class="cell"><div class="num" id="r-calls">0</div><div class="lbl">Calls automated / month</div></div>
+        <div class="cell"><div class="num" id="r-hours">0</div><div class="lbl">Agent hours saved / month</div></div>
+      </div>
+      <div class="big" style="margin-bottom:18px">
+        <div class="lbl">Routine calls self-served</div>
+        <div class="num" style="font-size:34px"><span id="r-pct">0</span>%</div>
+      </div>
+      <div class="cta">
+        <button class="btn">Schedule a Live Demo →</button>
+        <div class="fine">Typical health systems see measurable results within 30 days. Estimate only — your results will vary.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var vol=document.getElementById('vol'), routine=document.getElementById('routine'), cost=document.getElementById('cost');
+  var vVol=document.getElementById('v-vol'), vRoutine=document.getElementById('v-routine'), vCost=document.getElementById('v-cost');
+  var rSav=document.getElementById('r-savings'), rCalls=document.getElementById('r-calls'), rHours=document.getElementById('r-hours'), rPct=document.getElementById('r-pct');
+  var AUTO=0.85, HANDLE_MIN=4;
+  var cur={s:0,c:0,h:0,p:0};
+  function fmt(n){return n.toLocaleString('en-US');}
+  function money(n){return '$'+Math.round(n).toLocaleString('en-US');}
+  function animate(el,from,to,fmtFn,key){
+    var t0=performance.now(),dur=500;
+    function step(t){var p=Math.min((t-t0)/dur,1);var e=1-Math.pow(1-p,3);var val=from+(to-from)*e;el.textContent=fmtFn(val);if(p<1)requestAnimationFrame(step);else cur[key]=to;}
+    requestAnimationFrame(step);
+  }
+  function calc(){
+    var v=+vol.value, r=+routine.value/100, c=+cost.value;
+    vVol.textContent=fmt(v); vRoutine.textContent=routine.value+'%'; vCost.textContent='$'+(+cost.value).toFixed(2);
+    var autoMonth=v*r*AUTO;
+    var hours=autoMonth*HANDLE_MIN/60;
+    var savings=autoMonth*c*12;
+    var pct=Math.round(r*AUTO*100);
+    animate(rSav,cur.s,savings,money,'s');
+    animate(rCalls,cur.c,autoMonth,function(n){return fmt(Math.round(n));},'c');
+    animate(rHours,cur.h,hours,function(n){return fmt(Math.round(n));},'h');
+    animate(rPct,cur.p,pct,function(n){return Math.round(n);},'p');
+  }
+  [vol,routine,cost].forEach(function(el){el.addEventListener('input',calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
