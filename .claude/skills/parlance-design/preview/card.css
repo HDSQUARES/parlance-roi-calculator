@@ -1,0 +1,20 @@
+/* Shared chrome for Design System preview cards. Cards themselves stay minimal. */
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--white);
+  padding: 22px 24px;
+  -webkit-font-smoothing: antialiased;
+}
+.row { display: flex; gap: 14px; align-items: stretch; flex-wrap: wrap; }
+.col { display: flex; flex-direction: column; gap: 6px; }
+.swatch { border-radius: 12px; min-height: 64px; box-shadow: var(--sh-sm); border: 1px solid rgba(14,26,56,.05); }
+.sw-name { font-family: var(--font-display); font-weight: 600; font-size: 13px; color: var(--ink); }
+.sw-hex { font-size: 12px; color: var(--ink-3); font-family: ui-monospace, monospace; letter-spacing: .01em; }
+.lbl { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+
+/* Bubble animation — gentle continuous float (always visible, snapshot-safe) */
+@keyframes bubble-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.b-anim { animation: bubble-float 3.8s ease-in-out infinite; animation-delay: var(--bd, 0s); }

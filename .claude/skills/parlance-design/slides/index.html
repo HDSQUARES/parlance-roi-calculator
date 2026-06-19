@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Slides" name="Deck template" subtitle="7-slide branded deck: title, problem, stats, features, quote, comparison, closing" viewport="1280x720" -->
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parlance — Deck Template</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap');
+:root{--yellow:#F8C830;--teal:#40A0B8;--teal6:#2E92AB;--teal7:#1F7E96;--navy:#0E1A38;--navy8:#122249;--royal:#2E6FD0;--ink:#15233D;--ink2:#43536B;--ink3:#6B7888;--line:#E2E8F0;--mint:#E9F6F5;--grey:#F5F8FB;--green:#1f9d63}
+*{box-sizing:border-box}
+html,body{margin:0}
+deck-stage:not(:defined){visibility:hidden}
+section{font-family:'Open Sans',system-ui,sans-serif;color:var(--ink);background:#fff;overflow:hidden}
+.pad{padding:110px 130px;height:100%;display:flex;flex-direction:column}
+.eyebrow{font-family:'Poppins',sans-serif;font-weight:600;font-size:24px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal6)}
+.eyebrow.on{color:var(--yellow)}
+h1{font-family:'Poppins',sans-serif;font-weight:800;font-size:96px;line-height:1.04;letter-spacing:-.015em;margin:0}
+h2{font-family:'Poppins',sans-serif;font-weight:700;font-size:64px;line-height:1.1;margin:0}
+.lead{font-size:34px;line-height:1.5;color:var(--ink2)}
+.logo{height:46px}
+.dark{background:linear-gradient(125deg,var(--navy) 0%,var(--navy8) 48%,var(--royal) 125%);color:#fff}
+.dark h1,.dark h2{color:#fff}
+.dark .lead{color:rgba(255,255,255,.85)}
+.spacer{flex:1}
+.foot-logo{position:absolute;bottom:54px;right:70px;height:34px;opacity:.9}
+.kicker-bar{width:96px;height:7px;border-radius:4px;background:var(--yellow);margin-bottom:34px}
+
+/* title */
+.title-logo{height:60px;margin-bottom:60px}
+.title h1{max-width:1400px}
+.title h1 .y{color:var(--yellow)}
+.logostrip{display:flex;gap:54px;align-items:center;margin-top:auto;opacity:.85}
+.logostrip img{height:40px;filter:brightness(0) invert(1);opacity:.8}
+
+/* stats */
+.statgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:50px 90px;margin-top:70px}
+.stat .n{font-family:'Poppins',sans-serif;font-weight:800;font-size:124px;line-height:.95;letter-spacing:-.02em;color:var(--yellow)}
+.stat .l{font-size:30px;color:rgba(255,255,255,.82);margin-top:8px}
+
+/* feature columns */
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:54px;margin-top:80px}
+.feat .tile{width:104px;height:104px;border-radius:24px;background:var(--yellow);display:flex;align-items:center;justify-content:center;margin-bottom:34px}
+.feat .tile svg{width:52px;height:52px;color:#fff;stroke:#fff}
+.feat h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:38px;margin:0 0 16px;color:var(--ink)}
+.feat p{font-size:26px;line-height:1.5;color:var(--ink2);margin:0}
+
+/* quote */
+.quote{display:flex;gap:70px;align-items:center;height:100%}
+.quote .ph{width:340px;height:430px;border-radius:24px;object-fit:cover;flex-shrink:0;background:#fff}
+.quote blockquote{font-family:'Poppins',sans-serif;font-weight:700;font-size:58px;line-height:1.28;margin:0;letter-spacing:-.01em}
+.quote .qm{color:var(--teal);font-size:120px;font-family:'Poppins',sans-serif;font-weight:800;line-height:.3;height:50px}
+.quote .who{margin-top:44px;font-size:30px}
+.quote .who b{display:block;font-family:'Poppins',sans-serif;font-size:34px}
+.quote .who span{color:rgba(255,255,255,.66)}
+
+/* comparison */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:70px;flex:1}
+.cc{border-radius:24px;padding:54px;display:flex;flex-direction:column}
+.cc.old{background:var(--grey);border:2px solid var(--line)}
+.cc.new{background:linear-gradient(150deg,var(--navy),var(--royal));color:#fff}
+.cc .ch{font-family:'Poppins',sans-serif;font-weight:700;font-size:34px;margin:0 0 30px}
+.cc.old .ch{color:var(--ink3)}
+.cc ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:24px}
+.cc li{font-size:28px;line-height:1.4;display:flex;gap:18px;align-items:flex-start}
+.cc.old li{color:var(--ink2)}
+.cc .x,.cc .v{width:38px;height:38px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.cc .x{background:#F1D9D6}.cc .v{background:rgba(255,255,255,.16)}
+
+/* closing */
+.closing{align-items:flex-start;justify-content:center}
+.closing .contact{display:flex;gap:46px;margin-top:60px;font-size:30px;color:rgba(255,255,255,.85)}
+.closing .contact .it{display:flex;align-items:center;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:16px;background:var(--yellow);color:var(--navy);font-family:'Poppins',sans-serif;font-weight:700;font-size:32px;padding:26px 48px;border-radius:14px;margin-top:50px}
+</style>
+</head>
+<body>
+<deck-stage width="1920" height="1080">
+
+  <!-- 1. Title -->
+  <section data-label="Title">
+    <div class="pad dark title">
+      <img class="title-logo" src="../assets/logo-parlance-white.png" alt="Parlance">
+      <div class="eyebrow on">Voice AI for Healthcare</div>
+      <h1 style="margin-top:24px"><span class="y">Voice AI</span> for the busiest<br>front door in healthcare</h1>
+      <div class="lead" style="margin-top:30px;max-width:1100px">Optimize operations and improve self-service with conversational AI that answers, understands, and routes every patient call.</div>
+      <div class="logostrip"><img src="../assets/logos/ucla-health.png"><img src="../assets/logos/hca-healthcare.png"><img src="../assets/logos/uw-medicine.png"><img src="../assets/logos/virtua-health.png"></div>
+    </div>
+  </section>
+
+  <!-- 2. Problem -->
+  <section data-label="Problem">
+    <div class="pad">
+      <div class="kicker-bar"></div>
+      <div class="eyebrow">The challenge</div>
+      <h2 style="margin-top:24px;max-width:1300px">Health system contact centers are overwhelmed</h2>
+      <div class="lead" style="margin-top:40px;max-width:1180px">High inbound call volumes bury staff in routine requests — scheduling, refills, routing — while patients wait on hold and after-hours calls go unanswered.</div>
+      <div class="spacer"></div>
+      <div style="display:flex;gap:90px">
+        <div><div style="font-family:'Poppins';font-weight:800;font-size:96px;color:var(--teal6);line-height:1">5 PM</div><div style="font-size:26px;color:var(--ink3);margin-top:6px">Patients don't stop needing answers</div></div>
+        <div><div style="font-family:'Poppins';font-weight:800;font-size:96px;color:var(--teal6);line-height:1">40%+</div><div style="font-size:26px;color:var(--ink3);margin-top:6px">of agent time lost to routine calls</div></div>
+      </div>
+      <img class="foot-logo" src="../assets/logo-parlance.png">
+    </div>
+  </section>
+
+  <!-- 3. Stat band -->
+  <section data-label="Proof">
+    <div class="pad dark">
+      <div class="eyebrow on">By the numbers</div>
+      <h2 style="margin-top:24px;max-width:1200px">Three decades of healthcare voice</h2>
+      <div class="statgrid">
+        <div class="stat"><div class="n">1.9B+</div><div class="l">Calls handled</div></div>
+        <div class="stat"><div class="n">400+</div><div class="l">Health systems served</div></div>
+        <div class="stat"><div class="n">85%+</div><div class="l">Routine calls automated</div></div>
+        <div class="stat"><div class="n">30 days</div><div class="l">Average time to ROI</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Feature columns -->
+  <section data-label="How it works">
+    <div class="pad">
+      <div class="kicker-bar"></div>
+      <h2 style="max-width:1300px">Built for the way health systems operate</h2>
+      <div class="cols3">
+        <div class="feat"><div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div><h3>Name recognition</h3><p>Understands physician names, departments, and clinical terms from natural speech.</p></div>
+        <div class="feat"><div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg></div><h3>Real-time EHR</h3><p>Two-way HL7 integration keeps schedules and records updated during the call.</p></div>
+        <div class="feat"><div class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Engineered safety</h3><p>Hard stops and instant human transfer whenever a call needs a person.</p></div>
+      </div>
+      <img class="foot-logo" src="../assets/logo-parlance.png">
+    </div>
+  </section>
+
+  <!-- 5. Quote -->
+  <section data-label="Testimonial">
+    <div class="pad dark">
+      <div class="quote">
+        <img class="ph" src="../assets/headshot-hubka.png" alt="Kelly Hubka">
+        <div>
+          <div class="qm">"</div>
+          <blockquote>With Parlance, you have a strong partner working with you to optimize the process and the system.</blockquote>
+          <div class="who"><b>Kelly Hubka</b><span>Director of Population Health &amp; Care Navigation, AdventHealth Shawnee Mission</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Comparison -->
+  <section data-label="Old vs new">
+    <div class="pad">
+      <div class="kicker-bar"></div>
+      <h2>From phone menus to natural conversation</h2>
+      <div class="compare">
+        <div class="cc old">
+          <div class="ch">Traditional IVR</div>
+          <ul>
+            <li><span class="x"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#C0584C" stroke-width="2.6" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>"Press 1 for scheduling…" menu trees</li>
+            <li><span class="x"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#C0584C" stroke-width="2.6" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>Long holds and misroutes</li>
+            <li><span class="x"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#C0584C" stroke-width="2.6" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>No after-hours coverage</li>
+          </ul>
+        </div>
+        <div class="cc new">
+          <div class="ch" style="color:var(--yellow)">Parlance Voice AI</div>
+          <ul>
+            <li><span class="v"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>"Just tell me what you need."</li>
+            <li><span class="v"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Routed to the right team, first try</li>
+            <li><span class="v"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Always available, 24/7</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Closing -->
+  <section data-label="Closing">
+    <div class="pad dark closing">
+      <img class="logo" src="../assets/logo-parlance-white.png" style="margin-bottom:50px">
+      <h1 style="max-width:1300px">A better way to handle patient calls</h1>
+      <a class="btn">Schedule a Live Demo →</a>
+      <div class="contact">
+        <div class="it"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="var(--yellow)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>888-700-6263</div>
+        <div class="it"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>parlance.com</div>
+      </div>
+    </div>
+  </section>
+
+</deck-stage>
+<script src="deck-stage.js"></script>
+</body>
+</html>

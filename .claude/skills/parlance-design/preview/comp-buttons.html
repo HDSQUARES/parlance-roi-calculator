@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Components" name="Buttons" subtitle="Primary, outline, yellow, on-dark" viewport="700x210" --><html lang="en"><head><meta charset="utf-8"><title>Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css"><link rel="stylesheet" href="card.css">
+<style>
+.btn{font-family:var(--font-display);font-weight:600;font-size:15px;border-radius:9px;padding:12px 22px;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:all var(--dur) var(--ease)}
+.btn-primary{background:var(--teal-600);color:#fff}.btn-primary:hover{background:var(--teal-700)}
+.btn-outline{background:#fff;color:var(--ink);border:1.5px solid #C7D0DC}.btn-outline:hover{border-color:var(--ink)}
+.btn-yellow{background:var(--parlance-yellow);color:var(--navy-900)}
+.btn-ondark{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+.btn svg{width:16px;height:16px}
+</style></head><body>
+<div style="display:flex;flex-direction:column;gap:16px">
+  <div class="row" style="align-items:center">
+    <button class="btn btn-primary">Schedule a Demo</button>
+    <button class="btn btn-outline">See It in Action</button>
+    <button class="btn btn-yellow">Get the Case Study</button>
+  </div>
+  <div style="background:var(--grad-band);border-radius:14px;padding:18px 20px;display:flex;gap:14px;align-items:center">
+    <span class="p-eyebrow on-dark" style="margin-right:6px">ON DARK</span>
+    <button class="btn btn-ondark">Request a Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+    <button class="btn btn-primary">Talk to an Expert</button>
+  </div>
+</div>
+</body></html>

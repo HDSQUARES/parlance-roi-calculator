@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Brand" name="Sound-wave glyph" subtitle="Pulsing arcs broadcasting sound waves" viewport="700x170" --><html lang="en"><head><meta charset="utf-8"><title>Sound-wave glyph</title>
+<link rel="stylesheet" href="../colors_and_type.css"><link rel="stylesheet" href="card.css">
+<style>
+.gpanel{display:flex;align-items:center;justify-content:center;border-radius:14px;padding:26px;position:relative;overflow:hidden}
+.gwrap{position:relative;display:inline-flex;height:58px}
+.gwrap .main{height:58px;transform-origin:left center;animation:gpulse 1.8s ease-in-out infinite}
+.gwrap .echo{position:absolute;left:0;top:0;height:58px;transform-origin:left center;opacity:0;animation:gecho 2.2s ease-out infinite}
+.gwrap .echo:nth-of-type(2){animation-delay:.73s}
+.gwrap .echo:nth-of-type(3){animation-delay:1.46s}
+@keyframes gpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes gecho{0%{opacity:.55;transform:scale(1)}100%{opacity:0;transform:scale(2.1)}}
+</style></head><body>
+<div class="row" style="align-items:center;gap:26px">
+  <div class="gpanel" style="background:var(--bg-grey)">
+    <div class="gwrap">
+      <img class="echo" src="../assets/glyph-soundwave.png">
+      <img class="echo" src="../assets/glyph-soundwave.png">
+      <img class="echo" src="../assets/glyph-soundwave.png">
+      <img class="main" src="../assets/glyph-soundwave.png">
+    </div>
+  </div>
+  <div class="gpanel" style="background:var(--navy-900)">
+    <div class="gwrap">
+      <img class="echo" src="../assets/glyph-soundwave.png">
+      <img class="echo" src="../assets/glyph-soundwave.png">
+      <img class="echo" src="../assets/glyph-soundwave.png">
+      <img class="main" src="../assets/glyph-soundwave.png">
+    </div>
+  </div>
+  <div class="col" style="gap:4px"><div class="sw-name">Concentric arc motif</div><div class="p-sm" style="max-width:300px">Echoes spoken voice — logo mark, decorative framing arcs, and the teal photo swoosh.</div></div>
+</div>
+</body></html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- @dsCard group="Brand" name="Logo (light & dark)" subtitle="Wordmark with radiating sound-wave echo" viewport="700x150" --><html lang="en"><head><meta charset="utf-8"><title>Logo</title>
+<link rel="stylesheet" href="../colors_and_type.css"><link rel="stylesheet" href="card.css">
+<style>
+.lpanel{flex:1;padding:30px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.lwrap{position:relative;display:inline-flex;height:46px}
+.lwrap .lmain{height:46px;position:relative;z-index:1}
+.lwrap .lecho{position:absolute;left:0;top:0;height:46px;width:84px;object-fit:cover;object-position:left;transform-origin:left center;opacity:0;animation:lecho 2.6s ease-out infinite;z-index:0}
+.lwrap .lecho:nth-of-type(2){animation-delay:1.3s}
+@keyframes lecho{0%{opacity:.45;transform:scale(1)}100%{opacity:0;transform:scale(2)}}
+</style></head><body>
+<div class="row" style="gap:0">
+  <div class="lpanel" style="background:#fff;border:1px solid var(--line);border-radius:14px 0 0 14px">
+    <div class="lwrap">
+      <img class="lecho" src="../assets/glyph-soundwave.png">
+      <img class="lecho" src="../assets/glyph-soundwave.png">
+      <img class="lmain" src="../assets/logo-parlance.png">
+    </div>
+  </div>
+  <div class="lpanel" style="background:var(--navy-900);border-radius:0 14px 14px 0">
+    <div class="lwrap">
+      <img class="lecho" src="../assets/glyph-soundwave.png">
+      <img class="lecho" src="../assets/glyph-soundwave.png">
+      <img class="lmain" src="../assets/logo-parlance-white.png">
+    </div>
+  </div>
+</div>
+</body></html>
