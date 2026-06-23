@@ -127,8 +127,12 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .btn:active{transform:translateY(1px)}
 .fine{font-size:11px;color:rgba(255,255,255,.5);line-height:1.5;text-align:center}
 
-.footer{max-width:1180px;margin:34px auto 0;font-size:12px;color:var(--ink3);line-height:1.6}
-.footer b{color:var(--ink2)}
+.footer{max-width:1180px;margin:40px auto 0;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:13px;color:var(--ink3)}
+.footer .links{display:flex;gap:22px;flex-wrap:wrap}
+.footer a{color:var(--ink2);text-decoration:none;transition:color .18s var(--ease)}
+.footer a:hover{color:var(--teal6)}
 </style>
 </head>
 <body>
@@ -138,10 +142,9 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
     <div>
       <div class="brand"><img src="assets/logo-parlance.png" alt="Parlance"></div>
       <div class="eyebrow">Call Management ROI Calculator</div>
-      <h1>See what Parlance returns to your <span class="hl">patient access team</span></h1>
-      <p class="sub">Enter your team's numbers to project the annual capacity gain, cost savings, and reclaimed revenue Parlance Voice AI delivers — without adding staff.</p>
+      <h1>Discover the <span class="hl">Revenue</span> Hidden in Your Call Volume</h1>
+      <p class="sub">Enter your team's numbers to estimate the appointments, revenue, and operational savings Parlance can help recover.</p>
     </div>
-    <div class="aside">Modeled on Parlance's <b>Call Management ROI Projections</b>. Adjust the inputs to match your organization.</div>
   </div>
 
   <div class="grid">
@@ -254,11 +257,11 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 </div>
 
 <div class="footer">
-  <b>About this model.</b> Built from Parlance's <i>Call Management ROI Projections</i> report.
-  Capacity assumes routine-call deflection frees existing operators to handle more volume.
-  Staffing savings reflect deflecting ~50% of routine calls (the 30–70% band midpoint) of fully-loaded operator labor;
-  turnover, hidden-problem, FCR, and revenue figures are calibrated to Parlance's published projection and scale with your inputs.
-  All assumption constants live in the <code>CONFIG</code> block in this page's source for easy adjustment.
+  <span class="copy">© Copyright 2026 Parlance</span>
+  <span class="links">
+    <a href="https://www.parlancecorp.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a>
+    <a href="https://www.parlancecorp.com/security-policy" target="_blank" rel="noopener">Security Policy</a>
+  </span>
 </div>
 
 <script>
