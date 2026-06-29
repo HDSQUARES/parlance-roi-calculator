@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Parlance — Call Management ROI Calculator</title>
-<meta name="description" content="Estimate the annual ROI Parlance Voice AI delivers to your patient access team — capacity, staffing, turnover, and reclaimed revenue.">
+<meta name="description" content="Estimate the operational savings and recoverable revenue Parlance Voice AI delivers — anchored to validated Parlance client results (Allina Health, Virtua Health).">
 <link rel="icon" href="assets/glyph-soundwave-teal.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap');
@@ -40,8 +40,6 @@ body{
 h1{font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.4vw,42px);line-height:1.08;letter-spacing:-.015em;margin:0;max-width:18ch;text-wrap:balance}
 h1 .hl{color:var(--teal6)}
 .sub{font-size:16px;color:var(--ink2);margin:14px 0 0;max-width:60ch;line-height:1.55}
-.head .aside{font-size:13px;color:var(--ink3);text-align:right;line-height:1.5;max-width:240px}
-.head .aside b{color:var(--ink2);font-weight:700}
 
 /* ---- layout ---- */
 .grid{display:grid;grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);gap:24px;align-items:stretch;margin-top:30px}
@@ -73,7 +71,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .switch .knob{position:absolute;top:3px;left:3px;width:calc(50% - 3px);height:calc(100% - 6px);border-radius:999px;background:var(--teal6);transition:transform .22s var(--ease);box-shadow:0 2px 6px rgba(46,146,171,.4)}
 .switch[data-on="no"] .knob{transform:translateX(100%)}
 .switch[data-on="yes"] .opt.yes,.switch[data-on="no"] .opt.no{color:#fff}
-.note{font-size:12.5px;color:var(--ink3);margin-top:20px;line-height:1.55;border-top:1px solid var(--line-soft,#EDF1F6);padding-top:16px}
+.note{font-size:12.5px;color:var(--ink3);margin-top:20px;line-height:1.55;border-top:1px solid #EDF1F6;padding-top:16px}
 .note b{color:var(--ink2)}
 
 /* ---- results (navy) ---- */
@@ -87,39 +85,46 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .results h2{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin:0}
 .results .rs{font-size:13px;color:rgba(255,255,255,.6);margin:3px 0 22px}
 
-/* capacity */
-.cap{display:flex;align-items:center;gap:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-md);padding:18px 20px;margin-bottom:22px}
-.cap .col{flex:1}
-.cap .col .lbl{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:600;font-family:'Poppins',sans-serif}
-.cap .col .num{font-family:'Poppins',sans-serif;font-weight:800;font-size:27px;line-height:1.1;margin-top:5px;letter-spacing:-.01em}
-.cap .col.pot .num{color:#fff}
-.cap .arrow{flex:0 0 auto;color:var(--teal);font-size:22px;display:flex;align-items:center}
-.cap .pill{flex:0 0 auto;background:var(--yellow);color:var(--navy);font-family:'Poppins',sans-serif;font-weight:800;font-size:18px;border-radius:999px;padding:8px 14px;box-shadow:0 4px 14px rgba(248,200,48,.35);white-space:nowrap}
+/* total hero */
+.total-hero{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-md);padding:20px 22px;margin-bottom:24px}
+.total-hero .lbl{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.66);font-weight:600;font-family:'Poppins',sans-serif}
+.total-hero .num{font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(40px,4.8vw,56px);line-height:1.02;letter-spacing:-.02em;color:var(--yellow);margin-top:4px}
+.total-hero .pa{font-size:12px;color:rgba(255,255,255,.55);margin-top:5px}
 
-/* expense reduction grid */
+/* breakdown grid */
 .sec-lbl{font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow);margin:0 0 12px}
-.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
 .tile{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-md);padding:15px 16px;transition:background .2s var(--ease)}
 .tile:hover{background:rgba(255,255,255,.11)}
 .tile .ic{width:34px;height:34px;border-radius:9px;background:var(--yellow);display:flex;align-items:center;justify-content:center;margin-bottom:11px}
 .tile .ic svg{width:19px;height:19px;stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.tile .num{font-family:'Poppins',sans-serif;font-weight:800;font-size:24px;line-height:1;color:var(--yellow);letter-spacing:-.01em}
+.tile .num{font-family:'Poppins',sans-serif;font-weight:800;font-size:23px;line-height:1;color:var(--yellow);letter-spacing:-.01em}
 .tile .tt{font-size:12.5px;font-weight:700;color:#fff;margin-top:7px}
 .tile .dd{font-size:11px;color:rgba(255,255,255,.6);margin-top:3px;line-height:1.4}
 
-/* revenue + total */
-.rev{display:flex;align-items:center;gap:14px;background:linear-gradient(100deg,rgba(46,146,171,.22),rgba(46,111,208,.18));border:1px solid rgba(64,160,184,.35);border-radius:var(--r-md);padding:15px 18px;margin-bottom:18px}
+.subtotal-row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12.5px;color:rgba(255,255,255,.72);padding:4px 2px 18px}
+.subtotal-row .s-num{font-family:'Poppins',sans-serif;font-weight:700;color:#fff;font-size:15px}
+
+/* revenue line */
+.rev{display:flex;align-items:center;gap:14px;background:linear-gradient(100deg,rgba(46,146,171,.22),rgba(46,111,208,.18));border:1px solid rgba(64,160,184,.35);border-radius:var(--r-md);padding:15px 18px}
 .rev .ic{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
 .rev .ic svg{width:20px;height:20px;stroke:var(--yellow);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .rev .tx{flex:1}
 .rev .tx .tt{font-size:12.5px;font-weight:700}
 .rev .tx .dd{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px}
-.rev .num{font-family:'Poppins',sans-serif;font-weight:800;font-size:24px;color:#fff;letter-spacing:-.01em;white-space:nowrap}
+.rev .num{font-family:'Poppins',sans-serif;font-weight:800;font-size:23px;color:#fff;letter-spacing:-.01em;white-space:nowrap}
 
-.total{border-top:1px solid rgba(255,255,255,.14);padding-top:18px;margin-top:2px}
-.total .lbl{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.66);font-weight:600;font-family:'Poppins',sans-serif}
-.total .num{font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(38px,4.4vw,52px);line-height:1.02;letter-spacing:-.02em;color:var(--yellow);margin-top:4px}
-.total .pa{font-size:12px;color:rgba(255,255,255,.55);margin-top:4px}
+/* methodology */
+.method{margin-top:18px;border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
+.method>summary{cursor:pointer;list-style:none;font-family:'Poppins',sans-serif;font-weight:600;font-size:12.5px;color:var(--yellow);display:flex;align-items:center;gap:8px}
+.method>summary::-webkit-details-marker{display:none}
+.method>summary::after{content:"\25BE";margin-left:auto;transition:transform .2s var(--ease);font-size:11px;color:rgba(255,255,255,.6)}
+.method[open]>summary::after{transform:rotate(180deg)}
+.method .mbody{margin-top:12px}
+.method .mrow{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:11.5px;line-height:1.45}
+.method .mrow .k{color:#fff;font-weight:600;flex:0 0 38%}
+.method .mrow .d{color:rgba(255,255,255,.66)}
+.method .src{margin-top:12px;font-size:10.5px;color:rgba(255,255,255,.5);line-height:1.6}
 
 .cta{margin-top:22px;display:flex;flex-direction:column;gap:11px}
 .btn{font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;border-radius:10px;padding:15px;border:0;cursor:pointer;text-align:center;background:var(--yellow);color:var(--navy);transition:background .18s var(--ease),transform .1s var(--ease);text-decoration:none}
@@ -152,7 +157,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
     <!-- INPUTS -->
     <div class="panel">
       <h2>Your team</h2>
-      <p class="ph">Five questions. Everything updates live.</p>
+      <p class="ph">Tell us about your call operation. Everything updates live.</p>
 
       <div class="ctrl">
         <div class="lab"><span class="n">Calls per year your team handles</span><span class="v" id="v-calls">1,000,000</span></div>
@@ -161,93 +166,93 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
       </div>
 
       <div class="ctrl">
-        <div class="lab"><span class="n">Operators on your team</span><span class="v" id="v-ops">50</span></div>
-        <input type="range" id="ops" min="2" max="300" step="1" value="50">
+        <div class="lab"><span class="n">Operators on your team</span><span class="v" id="v-ops">12</span></div>
+        <input type="range" id="ops" min="2" max="300" step="1" value="12">
         <div class="scale"><span>2</span><span>300</span></div>
       </div>
 
       <div class="ctrl">
-        <div class="lab"><span class="n">Current openings on your team</span><span class="v" id="v-open">15</span></div>
-        <input type="range" id="open" min="0" max="100" step="1" value="15">
-        <div class="scale"><span>0</span><span>100</span></div>
-      </div>
-
-      <div class="ctrl">
-        <div class="lab"><span class="n">Average hourly rate per operator</span><span class="v" id="v-rate">$22.00</span></div>
-        <input type="range" id="rate" min="12" max="60" step="0.5" value="22">
-        <div class="scale"><span>$12</span><span>$60</span></div>
+        <div class="lab"><span class="n">Average hourly rate per operator</span><span class="v" id="v-rate">$27.00</span></div>
+        <input type="range" id="rate" min="16" max="60" step="0.5" value="27">
+        <div class="scale"><span>$16</span><span>$60</span></div>
       </div>
 
       <div class="toggle-row">
-        <div class="tl">Is this rate loaded?<small>Loaded = already includes benefits, PTO &amp; overhead. If not, we add a 30% burden.</small></div>
+        <div class="tl">Is this rate loaded?<small>Loaded = already includes benefits, PTO &amp; overhead. If not, we add a ~32% benefits burden.</small></div>
         <div class="switch" id="loaded" data-on="yes" role="switch" aria-checked="true" tabindex="0">
           <span class="opt yes">Yes</span><span class="opt no">No</span>
           <span class="knob"></span>
         </div>
       </div>
 
-      <div class="note">Working time assumed at <b>2,080 hours/operator/year</b>. Estimates use Parlance's published ROI model; constants are documented and editable in the page source. Figures are projections — your results will vary.</div>
+      <div class="note">Outputs are anchored to <b>validated Parlance client results</b> (Allina Health, Virtua Health) so projections never exceed what real clients demonstrate. Every constant is sourced in <b>"How we calculate this."</b> Figures are projections — your results will vary.</div>
     </div>
 
     <!-- RESULTS -->
     <div class="results">
      <div class="inner">
-      <h2>Your projected impact</h2>
-      <div class="rs">Per year, with Parlance — based on your existing staff</div>
+      <h2>Your projected annual impact</h2>
+      <div class="rs">Per year, with Parlance — anchored to validated client results</div>
 
-      <!-- capacity -->
-      <div class="cap">
-        <div class="col"><div class="lbl">Current volume</div><div class="num" id="r-cur">1,000,000</div></div>
-        <div class="arrow">→</div>
-        <div class="col pot"><div class="lbl">Potential volume</div><div class="num" id="r-pot">1,666,667</div></div>
-        <div class="pill" id="r-cap">+67%</div>
+      <!-- total hero -->
+      <div class="total-hero">
+        <div class="lbl">Total projected annual impact</div>
+        <div class="num" id="r-total">$320,000</div>
+        <div class="pa">Operational savings + recoverable revenue</div>
       </div>
 
-      <!-- expense reductions -->
-      <div class="sec-lbl">Reduce expenses</div>
+      <!-- operational savings -->
+      <div class="sec-lbl">Operational savings</div>
       <div class="tiles">
         <div class="tile">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <div class="num" id="r-staff">$1,144,000</div>
+          <div class="num" id="r-staff">$90,000</div>
           <div class="tt">Reduce staffing costs</div>
-          <div class="dd">Offload 30–70% of routine calls</div>
+          <div class="dd">Deflect routine calls; avoid overtime &amp; hires</div>
         </div>
         <div class="tile">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
-          <div class="num" id="r-turn">$872,400</div>
+          <div class="num" id="r-turn">$4,320</div>
           <div class="tt">Reduce turnover</div>
-          <div class="dd">Lower training &amp; onboarding cost</div>
+          <div class="dd">Less burnout, fewer backfills</div>
         </div>
         <div class="tile">
-          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v3l2 2"/></svg></div>
-          <div class="num" id="r-hidden">$72,500</div>
-          <div class="tt">Identify hidden problems</div>
-          <div class="dd">Streamline call management</div>
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h10"/><path d="M4 17h7"/><path d="m16 14 4 3-4 3"/></svg></div>
+          <div class="num" id="r-mgmt">$100,000</div>
+          <div class="tt">Streamline call management</div>
+          <div class="dd">Cut misroutes &amp; after-call work</div>
         </div>
         <div class="tile">
           <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="m9 10 2 2 4-4"/></svg></div>
-          <div class="num" id="r-fcr">$33,600</div>
+          <div class="num" id="r-fcr">$27,000</div>
           <div class="tt">Increase FCR</div>
           <div class="dd">Resolve more calls the first time</div>
         </div>
       </div>
+      <div class="subtotal-row"><span>Operational savings subtotal</span><span class="s-num" id="r-sub">$221,320</span></div>
 
       <!-- revenue -->
       <div class="rev">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <div class="tx"><div class="tt">Reclaim revenue</div><div class="dd">Prevent revenue leakage from poor caller experiences</div></div>
-        <div class="num" id="r-rev">$1,000,000</div>
+        <div class="tx"><div class="tt">Reclaim revenue</div><div class="dd">Recoverable revenue within the client-validated ceiling</div></div>
+        <div class="num" id="r-rev">$98,680</div>
       </div>
 
-      <!-- total -->
-      <div class="total">
-        <div class="lbl">Total projected annual impact</div>
-        <div class="num" id="r-total">$3,122,500</div>
-        <div class="pa">Expense reductions + reclaimed revenue, per year</div>
-      </div>
+      <!-- methodology -->
+      <details class="method">
+        <summary>How we calculate this</summary>
+        <div class="mbody">
+          <div class="mrow"><span class="k">Reduce staffing costs</span><span class="d">Calls &times; 25% deflection &times; 4-min handle time &times; 20% cash realization &times; loaded rate. Only the freed time that avoids overtime or a new hire is counted. <em>(MGMA DataDive 2025)</em></span></div>
+          <div class="mrow"><span class="k">Reduce turnover</span><span class="d">Operators &times; 30% annual turnover &times; 10% Parlance reduction &times; $12,000 cost per hire. <em>(SHRM 2025)</em></span></div>
+          <div class="mrow"><span class="k">Streamline call management</span><span class="d">Misrouted-call time (15% &times; 85 sec) + after-call documentation (30% of calls &times; 2 min &times; 30% automated), held to a conservative floor. QA/supervisor time is excluded — that capacity is still needed. <em>(MGMA 2024, Hyro.ai, CloudTalk 2026)</em></span></div>
+          <div class="mrow"><span class="k">Increase FCR</span><span class="d">Calls &times; 15% repeat-call rate &times; 10% improvement &times; 4-min handle time &times; loaded rate. <em>(DialogHealth 2025)</em></span></div>
+          <div class="mrow"><span class="k">Reclaim revenue</span><span class="d">(Calls &times; $0.32 client-validated per-call ceiling) &minus; operational savings. The ceiling is the blend of Allina Health ($0.278/call) and Virtua Health ($0.369/call), so the tool can never claim more than real clients demonstrate.</span></div>
+          <div class="src">The revenue line captures losses from: 7% call abandonment in healthcare contact centers (DialogHealth 2025), ~30% of inbound calls being new-patient inquiries (MGMA 2025), 27% of abandoned callers going to a competitor (CCD Care 2025), a $300&ndash;500 new-patient appointment value (HFMA 2025), and a $3,150 primary-care patient lifetime value (Levo Health 2025). The $0.32 ceiling updates as Parlance documents more clients.</div>
+        </div>
+      </details>
 
       <div class="cta">
-        <a class="btn" href="#" id="cta">Schedule a Live Demo →</a>
+        <a class="btn" href="#" id="cta">Schedule a Live Demo &rarr;</a>
         <div class="fine">Typical health systems see measurable results within 30 days. Estimate only — your results will vary.</div>
       </div>
      </div>
@@ -266,32 +271,57 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 
 <script>
 (function(){
-  // ---- CONFIG: documented assumptions (edit to match your rate card) ----
+  // ============================================================================
+  // CONFIG — every constant is named and sourced. No magic numbers.
+  // Re-anchored to validated Parlance client data per Ali Karasic (June 2026).
+  // ============================================================================
   var CONFIG = {
-    HOURS_PER_YEAR: 2080,      // full-time operator hours / year
-    BURDEN: 1.30,              // applied to hourly rate when "loaded?" = No
-    CAPACITY_DEFLECT: 0.40,    // routine deflection that frees capacity -> potential = calls/(1-this)
-    STAFF_DEFLECT: 0.50,       // % of routine calls offloaded (midpoint of report's 30-70%)
-    TURNOVER_RATIO: 1.271,     // cost to backfill an open role, as a multiple of annual base pay
-    HIDDEN_PER_CALL: 0.0725,   // $ recovered per call from solving hidden call-mgmt problems
-    FCR_PER_CALL: 0.0336,      // $ gained per call from higher first-call resolution
-    REVENUE_PER_CALL: 1.00     // $ reclaimed revenue per call (avg revenue x leakage reduction)
+    // Rate handling
+    BENEFITS_BURDEN:        1.32,   // applied to the entered rate when "loaded?" = No (~32%: base $19–21 + 30–35% benefits)
+
+    // ── LINE 1: Reduce staffing costs ──────────────────────────────────────
+    CALL_DEFLECTION_RATE:   0.25,   // 25% of calls deflected (revised 40%→25%; Ali Karasic, Jun 2026)
+    AVG_HANDLE_TIME_MIN:    4,       // avg handle time, minutes (MGMA DataDive 2025)
+    CASH_REALIZATION_RATE:  0.20,   // only 20% of freed time avoids OT/new hires and hits the P&L (conservative)
+
+    // ── LINE 2: Reduce turnover ────────────────────────────────────────────
+    COST_PER_HIRE:          12000,  // fully-loaded cost per contact-center hire (SHRM 2025)
+    ANNUAL_TURNOVER_RATE:   0.30,   // 30% annual turnover (revised 35%→30%)
+    TURNOVER_REDUCTION:     0.10,   // Parlance reduces turnover by 10% (revised 20%→10%)
+
+    // ── LINE 3: Streamline call management ─────────────────────────────────
+    MISROUTE_RATE:          0.15,   // 15% of calls misrouted (MGMA 2024 / Hyro.ai)
+    MISROUTE_HANDLE_SEC:    85,     // extra seconds per misrouted call (MGMA 2024)
+    WRAPUP_DOC_SHARE:       0.30,   // share of calls needing after-call documentation
+                                    //   (= 300K at 1M calls; corrects the brief's stale "600K", which came
+                                    //    from the old 40% deflection model, and reproduces its stated $81,000)
+    WRAPUP_TIME_MIN:        2,       // post-call documentation minutes per call (MGMA 2025)
+    WRAPUP_AUTOMATION_RATE: 0.30,   // share of wrap-up Parlance automates (CloudTalk 2026)
+    CALL_MGMT_CONSERVATISM: 0.56617,// full misroute+documentation analysis runs ~$176K/M; per Ali Karasic we
+                                    //   report a conservative ~$100K/M floor. This scales the full analysis to
+                                    //   that floor while keeping the line responsive to call volume and rate.
+
+    // ── LINE 4: Increase FCR ───────────────────────────────────────────────
+    REPEAT_CALL_RATE:       0.15,   // 15% of calls are repeats (DialogHealth 2025)
+    FCR_IMPROVEMENT:        0.10,   // 10% reduction in repeat calls from Parlance
+
+    // ── LINE 5: Reclaim revenue (client-anchored ceiling) ──────────────────
+    CLIENT_PER_CALL_RATE:   0.32    // blended validated per-call savings: Allina $0.278 + Virtua $0.369.
+                                    //   Total ceiling = calls × this. Revenue = ceiling − operational savings.
+                                    //   Update this constant (weighted avg) as more clients are documented.
   };
 
   var $ = function(id){ return document.getElementById(id); };
   var els = {
-    calls:$('calls'), ops:$('ops'), open:$('open'), rate:$('rate'), loaded:$('loaded'),
-    vCalls:$('v-calls'), vOps:$('v-ops'), vOpen:$('v-open'), vRate:$('v-rate'),
-    cur:$('r-cur'), pot:$('r-pot'), cap:$('r-cap'),
-    staff:$('r-staff'), turn:$('r-turn'), hidden:$('r-hidden'), fcr:$('r-fcr'),
-    rev:$('r-rev'), total:$('r-total')
+    calls:$('calls'), ops:$('ops'), rate:$('rate'), loaded:$('loaded'),
+    vCalls:$('v-calls'), vOps:$('v-ops'), vRate:$('v-rate'),
+    staff:$('r-staff'), turn:$('r-turn'), mgmt:$('r-mgmt'), fcr:$('r-fcr'),
+    sub:$('r-sub'), rev:$('r-rev'), total:$('r-total')
   };
 
   function fmt(n){ return Math.round(n).toLocaleString('en-US'); }
   function money(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
-  function money100(n){ return '$' + (Math.round(n/100)*100).toLocaleString('en-US'); } // report rounds to hundreds
 
-  // slider fill
   function fill(el){
     var pct = (el.value - el.min) / (el.max - el.min) * 100;
     el.style.setProperty('--fill', pct + '%');
@@ -312,43 +342,52 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
     })(performance.now());
   }
 
+  // Client-validated ceiling caps revenue so the tool never overstates (per brief).
+  function revenueRecapture(annualCalls, expenseSubtotal){
+    var totalCeiling = annualCalls * CONFIG.CLIENT_PER_CALL_RATE;
+    return Math.max(0, totalCeiling - expenseSubtotal);
+  }
+
   function calc(){
     var calls = +els.calls.value,
         ops   = +els.ops.value,
-        open  = +els.open.value,
         rate  = +els.rate.value,
         loaded = els.loaded.getAttribute('data-on') === 'yes';
 
-    // input labels
     els.vCalls.textContent = fmt(calls);
     els.vOps.textContent   = fmt(ops);
-    els.vOpen.textContent  = fmt(open);
     els.vRate.textContent  = '$' + rate.toFixed(2);
-    [els.calls, els.ops, els.open, els.rate].forEach(fill);
+    [els.calls, els.ops, els.rate].forEach(fill);
 
-    var effRate = loaded ? rate : rate * CONFIG.BURDEN;
-    var annualLaborPerOp = effRate * CONFIG.HOURS_PER_YEAR;
+    var loadedRate = loaded ? rate : rate * CONFIG.BENEFITS_BURDEN;
+    var handleHrs  = CONFIG.AVG_HANDLE_TIME_MIN / 60;
 
-    var potential = calls / (1 - CONFIG.CAPACITY_DEFLECT);
-    var capGain   = Math.round((potential / calls - 1) * 100);
+    // LINE 1 — Reduce staffing costs
+    var staff = calls * CONFIG.CALL_DEFLECTION_RATE * handleHrs * CONFIG.CASH_REALIZATION_RATE * loadedRate;
 
-    var round100 = function(n){ return Math.round(n / 100) * 100; };
-    var staff  = round100(ops  * annualLaborPerOp * CONFIG.STAFF_DEFLECT);
-    var turn   = round100(open * annualLaborPerOp * CONFIG.TURNOVER_RATIO);
-    var hidden = round100(calls * CONFIG.HIDDEN_PER_CALL);
-    var fcr    = round100(calls * CONFIG.FCR_PER_CALL);
-    var rev    = round100(calls * CONFIG.REVENUE_PER_CALL);
-    var total  = staff + turn + hidden + fcr + rev; // sum of displayed figures
+    // LINE 2 — Reduce turnover
+    var turn = ops * CONFIG.ANNUAL_TURNOVER_RATE * CONFIG.TURNOVER_REDUCTION * CONFIG.COST_PER_HIRE;
 
-    animate(els.cur,   'cur',   calls,     fmt);
-    animate(els.pot,   'pot',   potential, fmt);
-    els.cap.textContent = '+' + capGain + '%';
-    animate(els.staff, 'staff', staff,  money100);
-    animate(els.turn,  'turn',  turn,   money100);
-    animate(els.hidden,'hidden',hidden, money100);
-    animate(els.fcr,   'fcr',   fcr,    money100);
-    animate(els.rev,   'rev',   rev,    money100);
-    animate(els.total, 'total', total,  money);
+    // LINE 3 — Streamline call management (misroute + after-call documentation, conservatively scaled)
+    var misroute = calls * CONFIG.MISROUTE_RATE * (CONFIG.MISROUTE_HANDLE_SEC / 3600) * loadedRate;
+    var afterCall = calls * CONFIG.WRAPUP_DOC_SHARE * (CONFIG.WRAPUP_TIME_MIN / 60) * CONFIG.WRAPUP_AUTOMATION_RATE * loadedRate;
+    var mgmt = (misroute + afterCall) * CONFIG.CALL_MGMT_CONSERVATISM;
+
+    // LINE 4 — Increase FCR
+    var fcr = calls * CONFIG.REPEAT_CALL_RATE * CONFIG.FCR_IMPROVEMENT * handleHrs * loadedRate;
+
+    // Subtotal + client-anchored revenue recapture
+    var subtotal = staff + turn + mgmt + fcr;
+    var rev   = revenueRecapture(calls, subtotal);
+    var total = subtotal + rev;
+
+    animate(els.staff, 'staff', staff, money);
+    animate(els.turn,  'turn',  turn,  money);
+    animate(els.mgmt,  'mgmt',  mgmt,  money);
+    animate(els.fcr,   'fcr',   fcr,   money);
+    animate(els.sub,   'sub',   subtotal, money);
+    animate(els.rev,   'rev',   rev,   money);
+    animate(els.total, 'total', total, money);
   }
 
   // loaded toggle
@@ -361,7 +400,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   els.loaded.addEventListener('click', toggle);
   els.loaded.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); toggle(); }});
 
-  [els.calls, els.ops, els.open, els.rate].forEach(function(el){ el.addEventListener('input', calc); });
+  [els.calls, els.ops, els.rate].forEach(function(el){ el.addEventListener('input', calc); });
   calc();
 })();
 </script>
